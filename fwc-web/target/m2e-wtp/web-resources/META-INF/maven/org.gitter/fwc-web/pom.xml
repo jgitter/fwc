@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.gitter</groupId>
+        <artifactId>fwc</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>fwc-web</artifactId>
+    <packaging>war</packaging>
+    
+    <name>Framework Comparison front-end web project</name>
+    <description>
+        This project holds the front-end interface for the framework comparison applications and the
+        implementation of the DAOs.
+    </description>
+
+    <contributors>
+        <contributor>
+            <name>Jeff Gitter</name>
+            <email>jgitter@nvisia.com</email>
+            <organization>NVisia, LLC</organization>
+            <organizationUrl>www.nvisia.com</organizationUrl>
+        </contributor>
+    </contributors>
+    
+    <dependencies>
+    
+    </dependencies>
+</project>

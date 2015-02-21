@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:sws="http://www.springframework.org/schema/web-services"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/web-services
+        http://www.springframework.org/schema/web-services/web-services.xsd">
+
+    <mvc:annotation-driven />
+    <context:annotation-config />
+    <context:component-scan base-package="org.gitter.fwc" />
+    <sws:annotation-driven />
+
+    <sws:dynamic-wsdl id="InstitutionService" portTypeName="InstitutionService" serviceName="InstitutionService"
+        locationUri="/soap/institution/InstitutionService" >
+        <sws:xsd location="/schemas/InstitutionService.xsd" />
+    </sws:dynamic-wsdl>
+
+    <jee:local-slsb id="institutionDAO" jndi-name="java:app/fwc-dao/InstitutionDAOImpl"
+        business-interface="org.gitter.fwc.dao.InstitutionDAO" lazy-init="true" />
+
+    <bean name="institutionService" class="org.gitter.fwc.InstitutionService">
+        <property name="dao" ref="institutionDAO" />
+    </bean>
+</beans>

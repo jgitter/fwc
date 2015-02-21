@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Framework Comparison Spring services web project
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: org.gitter
+Build-Jdk: 1.7.0_15
+Built-By: gitter
+Created-By: Maven Integration for Eclipse
+Specification-Title: Framework Comparison Spring services web project
+Specification-Version: 1.0.0-SNAPSHOT
+

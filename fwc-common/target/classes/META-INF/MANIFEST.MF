@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: gitter
+Build-Jdk: 1.7.0_15
+Specification-Title: Framework Comparison interfaces and common code
+Specification-Version: 1.0.0-SNAPSHOT
+Implementation-Title: Framework Comparison interfaces and common code
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: org.gitter
+Created-By: Maven Integration for Eclipse
+

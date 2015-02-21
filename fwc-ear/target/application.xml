@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+	"-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN"
+	"http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+  <display-name>Framework Comparison</display-name>
+  <description>This application archive houses the EJB3 web services and Spring web services for comparison</description>
+  <module>
+    <web>
+      <web-uri>fwc-web.war</web-uri>
+      <context-root>/fwc</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>fwc-ejb-web.war</web-uri>
+      <context-root>/fwc-ejb</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>fwc-spring-web.war</web-uri>
+      <context-root>/fwc-spring</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>fwc-dao</ejb>
+  </module>
+</application>

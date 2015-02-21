@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fwc="http://fwc.gitter.org/schemas"
+    elementFormDefault="qualified" targetNamespace="http://fwc.gitter.org/schemas">
+    <xs:complexType name="FindInstitutionsRequest">
+        <xs:sequence>
+            <xs:element name="keyword" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findInstitutionsResponse">
+        <xs:sequence>
+            <xs:element name="data" type="fwc:ResponseWrapper" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ResponseWrapper">
+        <xs:sequence>
+            <xs:element name="institutions" type="fwc:InstitutionsList" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InstitutionsList">
+        <xs:sequence>
+            <xs:element name="institution" type="fwc:MapType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MapType">
+        <xs:sequence>
+            <xs:element name="entry" minOccurs="0" maxOccurs="unbounded" type="fwc:MapItemType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MapItemType">
+        <xs:sequence>
+            <xs:element name="key" type="xs:anyType" />
+            <xs:element name="value" type="xs:anyType" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

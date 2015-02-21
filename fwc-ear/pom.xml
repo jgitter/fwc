@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.gitter</groupId>
+        <artifactId>fwc</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>fwc-ear</artifactId>
+    <packaging>ear</packaging>
+
+    <name>Framework Comparison Application</name>
+    <description>This application archive houses the EJB3 web services and Spring web services for comparison</description>
+
+    <contributors>
+        <contributor>
+            <name>Jeff Gitter</name>
+            <email>jgitter@nvisia.com</email>
+            <organization>NVisia, LLC</organization>
+            <organizationUrl>www.nvisia.com</organizationUrl>
+        </contributor>
+    </contributors>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-web</artifactId>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-ejb-web</artifactId>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-spring-web</artifactId>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-dao</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <applicationName>Framework Comparison</applicationName>
+                    <displayName>Framework Comparison</displayName>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <finalName>fwc</finalName>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <webModule>
+                            <groupId>org.gitter</groupId>
+                            <artifactId>fwc-web</artifactId>
+                            <bundleFileName>fwc-web.war</bundleFileName>
+                            <uri>fwc-web.war</uri>
+                            <contextRoot>/fwc</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>org.gitter</groupId>
+                            <artifactId>fwc-ejb-web</artifactId>
+                            <bundleFileName>fwc-ejb-web.war</bundleFileName>
+                            <uri>fwc-ejb-web.war</uri>
+                            <contextRoot>/fwc-ejb</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>org.gitter</groupId>
+                            <artifactId>fwc-spring-web</artifactId>
+                            <bundleFileName>fwc-spring-web.war</bundleFileName>
+                            <uri>fwc-spring-web.war</uri>
+                            <contextRoot>/fwc-spring</contextRoot>
+                        </webModule>
+                        <ejbModule>
+                            <groupId>org.gitter</groupId>
+                            <artifactId>fwc-dao</artifactId>
+                            <bundleFileName>fwc-dao</bundleFileName>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>jboss-deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.8</version>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>${project.groupId}</groupId>
+                                            <artifactId>fwc-ear</artifactId>
+                                            <version>${project.version}</version>
+                                            <type>ear</type>
+                                            <overWrite>true</overWrite>
+                                            <destFileName>fwc.ear</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <outputDirectory>${deploy.folder}</outputDirectory>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
