@@ -1,8 +1,45 @@
 <html>
-    <head>
-        <title>FWC Web</title>
-    </head>
-    <body>
-       <p>FWC Web</p>
-    </body>
+<head>
+    <title>FWC Web</title>
+
+    <link rel="stylesheet" href="lib/foundation-5.5.1/css/foundation.min.css" />
+    <link rel="stylesheet" href="style/app.css" />
+    
+    <script src="lib/jquery-2.1.3.min.js"></script>
+    <script src="lib/jquery.soap.js"></script>
+    <script src="lib/foundation-5.5.1/js/vendor/modernizr.js"></script>
+    <script src="lib/foundation-5.5.1/js/foundation.min.js"></script>
+    <script src="lib/vkbeautify.0.99.00.beta.js"></script>
+    
+    <script src="js/fwc.js"></script>
+</head>
+<body onload="$(document).ready(fwc.startup);">
+    <div class="row main">
+        <div class="large-3 medium-2 small-1 columns">&nbsp;</div>
+        <div class="large-6 medium-8 small-10 columns">
+            <div class="row form">
+                <div class="panel">
+                    <p>
+                        Perform a keyword search from a list of Institutions
+                        of Higher Learning from
+                        <a href="https://inventory.data.gov/dataset/032e19b4-5a90-41dc-83ff-6e4cd234f565/resource/38625c3d-5388-4c16-a30f-d105432553a4">https://inventory.data.gov</a>
+                    </p>
+                    <label for="keyword">Keyword: </label>
+                    <input name="keyword" class="keyword" size="50" value="Milwaukee WI" />
+                    <p>Perform the search using one of the following services: </p>
+                    <button class="ejb-rest">EJB REST Service</button>
+                    <button class="spring-rest">Spring REST Service</button>
+                    <button class="ejb-soap">EJB SOAP Service</button>
+                    <button class="spring-soap">Spring SOAP Service</button>
+                    
+                </div>
+            </div>
+            <div class="row response panel">
+                <pre class="data"></pre>
+            </div>
+        </div>
+        <div class="large-3 medium-2 small-1 columns">&nbsp;</div>
+    </div>
+    <div class="wait" style="display:none;"><div></div></div>
+</body>
 </html>
