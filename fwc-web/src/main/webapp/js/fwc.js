@@ -100,7 +100,7 @@
     }
 
     var resetDataDiv = function() {
-        $('.response').height($('body').height() - $('.form').height() - 40);
+        $('.response').height($('body').height() - $('.form').height() - 60);
     }
 
     var htmlEncode = function(value) {

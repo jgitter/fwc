@@ -18,15 +18,16 @@
         <div class="large-3 medium-2 small-1 columns">&nbsp;</div>
         <div class="large-6 medium-8 small-10 columns">
             <div class="row form">
-                <div class="panel">
+                <div class="panel radius">
                     <p>
                         Perform a keyword search from a list of Institutions
                         of Higher Learning from
                         <a href="https://inventory.data.gov/dataset/032e19b4-5a90-41dc-83ff-6e4cd234f565/resource/38625c3d-5388-4c16-a30f-d105432553a4">https://inventory.data.gov</a>
+                        using one of the provided services:
                     </p>
                     <label for="keyword">Keyword: </label>
                     <input name="keyword" class="keyword" size="50" value="Milwaukee WI" />
-                    <p>Perform the search using one of the following services: </p>
+                    <br/>
                     <button class="ejb-rest">EJB REST Service</button>
                     <button class="spring-rest">Spring REST Service</button>
                     <button class="ejb-soap">EJB SOAP Service</button>
@@ -34,7 +35,7 @@
                     
                 </div>
             </div>
-            <div class="row response panel">
+            <div class="row response panel radius">
                 <pre class="data"></pre>
             </div>
         </div>
