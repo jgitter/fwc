@@ -16,7 +16,6 @@
         http://www.springframework.org/schema/web-services/web-services.xsd">
 
     <mvc:annotation-driven />
-    <context:annotation-config />
     <context:component-scan base-package="org.gitter.fwc" />
     <sws:annotation-driven />
 
@@ -28,7 +27,10 @@
     <jee:local-slsb id="institutionDAO" jndi-name="java:app/fwc-dao/InstitutionDAOImpl"
         business-interface="org.gitter.fwc.dao.InstitutionDAO" lazy-init="true" />
 
+    <!-- This is only needed if not already registered via the component-scan performed above -->
+    <!-- 
     <bean name="institutionService" class="org.gitter.fwc.InstitutionService">
         <property name="dao" ref="institutionDAO" />
     </bean>
+     -->
 </beans>
