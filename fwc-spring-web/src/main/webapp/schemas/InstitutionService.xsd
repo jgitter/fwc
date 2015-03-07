@@ -1,44 +1,32 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fwc.gitter.org/services/"
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fwc.gitter.org/services/"
     elementFormDefault="qualified" targetNamespace="http://fwc.gitter.org/services/" version="1.0">
-    
-    <xs:element name="findInstitutionsRequest" type="tns:findInstitutions" />
-
+    <xs:element name="findInstitutions" type="tns:findInstitutions" />
+    <xs:element name="findInstitutionsRequest" type="tns:findInstitutionsRequest" />
     <xs:element name="findInstitutionsResponse" nillable="true" type="xs:anyType" />
-
     <xs:complexType name="findInstitutions">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="tns:findInstitutionsRequest" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findInstitutionsRequest">
         <xs:sequence>
             <xs:element minOccurs="0" name="keyword" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
-
     <xs:complexType name="findInstitutionsResponse">
         <xs:sequence>
-            <xs:element minOccurs="0" ref="tns:findInstitutionsResponse" />
+            <xs:element form="qualified" minOccurs="0" name="institutionList" type="tns:institutionList" />
         </xs:sequence>
     </xs:complexType>
-
-    <xs:complexType name="FindInstitutionsResponse">
+    <xs:complexType name="institutionList">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="institutionList" type="tns:institution" />
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="institution" type="tns:institution" />
         </xs:sequence>
     </xs:complexType>
-
     <xs:complexType name="institution">
         <xs:sequence>
-            <xs:element name="institution">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element minOccurs="0" name="key" type="xs:string" />
-                                    <xs:element minOccurs="0" name="value" type="xs:string" />
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element minOccurs="0" name="address" type="xs:string" />
+            <xs:element minOccurs="0" name="institutionName" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
