@@ -56,6 +56,7 @@
                             <className>org.gitter.fwc.services.endpoints.InstitutionSoapServiceImpl</className>
                             <outputFile>${project.build.directory}/generated-resources/wsdl/InstitutionService.wsdl</outputFile>
                             <address>this can be blank, JBoss will rewrite the address :-)</address>
+                            <verbose>true</verbose>
                         </configuration>
                         <goals>
                             <goal>java2ws</goal>
