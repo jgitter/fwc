@@ -1,4 +1,4 @@
-package org.gitter.fwc;
+package org.gitter.fwc.services;
 
 import java.util.ArrayList;
 import java.util.List;

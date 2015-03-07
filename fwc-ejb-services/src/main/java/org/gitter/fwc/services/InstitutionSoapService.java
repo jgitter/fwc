@@ -1,4 +1,4 @@
-package org.gitter.fwc;
+package org.gitter.fwc.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.gitter.fwc.transfer.FindInstitutionsResponse;
 import org.gitter.fwc.transfer.Institution;
 
 @Stateless
-@WebService(name = "InstitutionService", serviceName = "soap/institution", targetNamespace = "http://fwc.gitter.org/services/")
+@WebService(name = "InstitutionService", serviceName = "soap-institution", targetNamespace = "http://fwc.gitter.org/services/")
 public class InstitutionSoapService {
 
     @Inject

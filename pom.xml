@@ -34,6 +34,7 @@
         <jboss.dir>c:/users/gitter/jboss-eap-6.3</jboss.dir>
         <deploy.folder>${jboss.dir}/standalone/deployments-comparison</deploy.folder>
         <spring.version>4.0.9.RELEASE</spring.version>
+        <cxf.version>3.0.4</cxf.version>
     </properties>
 
     <dependencyManagement>
@@ -194,6 +195,23 @@
                             </manifest>
                         </archive>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-java2ws-plugin</artifactId>
+                    <version>${cxf.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.cxf</groupId>
+                            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                            <version>${cxf.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.cxf</groupId>
+                            <artifactId>cxf-rt-frontend-simple</artifactId>
+                            <version>${cxf.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

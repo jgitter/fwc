@@ -16,16 +16,20 @@
         http://www.springframework.org/schema/web-services/web-services.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="org.gitter.fwc" />
+    <context:component-scan base-package="org.gitter.fwc.services" />
     <sws:annotation-driven />
 
-    <sws:dynamic-wsdl id="InstitutionService" portTypeName="InstitutionService" serviceName="InstitutionService"
-        locationUri="/soap/institution/InstitutionService" >
+    <sws:dynamic-wsdl id="InstitutionService"
+        portTypeName="InstitutionService"
+        serviceName="InstitutionService"
+        locationUri="/soap/institution/InstitutionService">
         <sws:xsd location="/schemas/InstitutionService.xsd" />
     </sws:dynamic-wsdl>
 
-    <jee:local-slsb id="institutionDAO" jndi-name="java:app/fwc-dao/InstitutionDAOImpl"
-        business-interface="org.gitter.fwc.dao.InstitutionDAO" lazy-init="true" />
+    <jee:local-slsb id="institutionDAO"
+        jndi-name="java:app/fwc-dao/InstitutionDAOImpl"
+        business-interface="org.gitter.fwc.dao.InstitutionDAO"
+        lazy-init="true" />
 
     <!-- This is only needed if not already registered via the component-scan performed above -->
     <!-- 

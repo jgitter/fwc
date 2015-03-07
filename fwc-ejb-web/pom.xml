@@ -33,4 +33,46 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.gitter</groupId>
+                        <artifactId>fwc-common</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generateWsdl</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <genWsdl>true</genWsdl>
+                            <genServer>false</genServer>
+                            <genClient>false</genClient>
+                            <className>org.gitter.fwc.services.InstitutionSoapService</className>
+                            <outputFile>${project.build.directory}/generated-resources/wsdl/GeneratedInstitutionService.wsdl</outputFile>
+                            <address>http://example:1234/fwc-ejb/soap-institution/InstitutionService</address>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${project.build.directory}/generated-resources</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

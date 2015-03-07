@@ -70,7 +70,7 @@ public class InstitutionDAOImpl implements InstitutionDAO {
                     .append("?resource_id=")
                     .append(CKAN_RESOURCE_ID)
                     .append("&q=")
-                    .append(URLEncoder.encode(searchTerm, "UTF-8"))
+                    .append(URLEncoder.encode(searchTerm == null ? "" : searchTerm, "UTF-8"))
                     .toString();
         } catch (UnsupportedEncodingException e) {
             logger.error("Unable to build the search URL", e);
