@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(namespace = "http://fwc.gitter.org/services/")
-@XmlType(name = "FindInstitutionsRequest")
+@XmlType(name = "findInstitutionsRequest")
 public class FindInstitutionsRequest {
     public static final String NAME = "findInstitutionsRequest";
 
