@@ -3,8 +3,14 @@
   <wsdl:types>
     <xs:schema elementFormDefault="unqualified" targetNamespace="http://fwc.gitter.org/services/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="findInstitutions" type="tns:findInstitutions"/>
+      <xs:element name="findInstitutionsRequest" type="tns:FindInstitutionsRequest"/>
       <xs:element name="findInstitutionsResponse" nillable="true" type="xs:anyType"/>
       <xs:complexType name="findInstitutions">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:findInstitutionsRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindInstitutionsRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="keyword" type="xs:string"/>
         </xs:sequence>
@@ -72,7 +78,12 @@
    <soapenv:Header/>
    <soapenv:Body>
       <ser:findInstitutions>
-         </ser:findInstitutions>
+         <!--Optional:-->
+         <ser:findInstitutionsRequest>
+            <!--Optional:-->
+            <keyword>?</keyword>
+         </ser:findInstitutionsRequest>
+      </ser:findInstitutions>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fwc.gitter.org/services/InstitutionService/findInstitutions"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="InstitutionServiceSoap11" type="wsdl" bindingName="{http://fwc.gitter.org/services/}InstitutionServiceSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/fwc-spring/soap/institution/InstitutionService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/fwc-spring/soap/institution/InstitutionService.wsdl"><con:part><con:url>http://localhost:8080/fwc-spring/soap/institution/InstitutionService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://fwc.gitter.org/services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://fwc.gitter.org/services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fwc.gitter.org/services/">
   <wsdl:types>
@@ -155,7 +166,11 @@
    <soapenv:Header/>
    <soapenv:Body>
       <ser:findInstitutions>
-      	<keyword>Milwaukee WI</keyword>
+         <!--Optional:-->
+         <ser:findInstitutionsRequest>
+            <!--Optional:-->
+            <keyword>Milwaukee WI</keyword>
+         </ser:findInstitutionsRequest>
       </ser:findInstitutions>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fwc.gitter.org/services/InstitutionService/findInstitutions"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spring Soap Test Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>InstitutionServiceSoap11</con:interface><con:operation>findInstitutions</con:operation><con:request name="Spring Soap Test Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fwc-spring/soap/institution/InstitutionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://fwc.gitter.org/services/">

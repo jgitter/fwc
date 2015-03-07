@@ -1,9 +1,11 @@
-package org.gitter.fwc.services;
+package org.gitter.fwc.services.endpoints;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.gitter.fwc.services.InstitutionService;
+import org.gitter.fwc.services.InstitutionSoapService;
 import org.gitter.fwc.transfer.FindInstitutionsRequest;
 import org.gitter.fwc.transfer.FindInstitutionsResponse;
 import org.gitter.fwc.transfer.Institution;
@@ -14,16 +16,17 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
-public class InstitutionSoapService {
+public class InstitutionSoapServiceImpl implements InstitutionSoapService {
     private InstitutionService service;
 
     @Autowired
-    public InstitutionSoapService(InstitutionService service) {
+    public InstitutionSoapServiceImpl(InstitutionService service) {
         this.service = service;
     }
 
+    @Override
     @PayloadRoot(localPart = "findInstitutionsRequest",
-            namespace = "http://fwc.gitter.org/services/")
+            namespace = InstitutionSoapService.TARGET_NAMESPACE)
     public @ResponsePayload FindInstitutionsResponse findInstitutions(
             @RequestPayload FindInstitutionsRequest request) {
         FindInstitutionsResponse response = new FindInstitutionsResponse();

@@ -1,4 +1,4 @@
-package org.gitter.fwc.services;
+package org.gitter.fwc.services.endpoints;
 
 import java.util.List;
 import java.util.Map;
@@ -11,13 +11,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.gitter.fwc.services.InstitutionRestController;
+import org.gitter.fwc.services.InstitutionService;
+
 @Path("/institution")
 @Stateless
-public class InstitutionRestController {
+public class InstitutionRestControllerImpl implements InstitutionRestController {
 
     @Inject
     private InstitutionService service;
 
+    @Override
     @GET
     @Path("{keyword}")
     @Produces(MediaType.APPLICATION_JSON)

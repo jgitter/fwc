@@ -1,4 +1,4 @@
-package org.gitter.fwc.services;
+package org.gitter.fwc.services.endpoints;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,25 +11,32 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
+import org.gitter.fwc.services.InstitutionService;
+import org.gitter.fwc.services.InstitutionSoapService;
+import org.gitter.fwc.transfer.FindInstitutionsRequest;
 import org.gitter.fwc.transfer.FindInstitutionsResponse;
 import org.gitter.fwc.transfer.Institution;
 
 @Stateless
-@WebService(name = "InstitutionService", serviceName = "soap-institution", targetNamespace = "http://fwc.gitter.org/services/", wsdlLocation = "/WEB-INF/wsdl/InstitutionService.wsdl")
-public class InstitutionSoapService {
+@WebService(name = "InstitutionService", serviceName = "soap-institution",
+        targetNamespace = InstitutionSoapService.TARGET_NAMESPACE)
+public class InstitutionSoapServiceImpl implements InstitutionSoapService {
 
     @Inject
     private InstitutionService service;
 
+    @Override
     @WebMethod
-    @WebResult(targetNamespace = "http://fwc.gitter.org/services/", name = "findInstitutionsResponse")
+    @WebResult(targetNamespace = InstitutionSoapService.TARGET_NAMESPACE,
+            name = FindInstitutionsResponse.NAME)
     public FindInstitutionsResponse findInstitutions(
-            @WebParam(name = "keyword") String keyword) {
+            @WebParam(targetNamespace = InstitutionSoapService.TARGET_NAMESPACE,
+                    name = FindInstitutionsRequest.NAME) FindInstitutionsRequest request) {
 
         FindInstitutionsResponse response = new FindInstitutionsResponse();
 
         List<Institution> list = new ArrayList<Institution>();
-        List<Map<String, String>> results = service.findInstitutions(keyword);
+        List<Map<String, String>> results = service.findInstitutions(request.getKeyword());
         for (Map<String, String> result : results) {
             Institution institution = new Institution();
             institution.setInstitutionData(result);

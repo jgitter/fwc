@@ -53,9 +53,9 @@
                             <genWsdl>true</genWsdl>
                             <genServer>false</genServer>
                             <genClient>false</genClient>
-                            <className>org.gitter.fwc.services.InstitutionSoapService</className>
-                            <outputFile>${project.build.directory}/generated-resources/wsdl/GeneratedInstitutionService.wsdl</outputFile>
-                            <address>http://example:1234/fwc-ejb/soap-institution/InstitutionService</address>
+                            <className>org.gitter.fwc.services.endpoints.InstitutionSoapServiceImpl</className>
+                            <outputFile>${project.build.directory}/generated-resources/wsdl/InstitutionService.wsdl</outputFile>
+                            <address>this can be blank, JBoss will rewrite the address :-)</address>
                         </configuration>
                         <goals>
                             <goal>java2ws</goal>
@@ -73,10 +73,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF</outputDirectory>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/wsdl</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.build.directory}/generated-resources</directory>
+                                    <directory>${project.build.directory}/generated-resources/wsdl</directory>
                                 </resource>
                             </resources>
                         </configuration>

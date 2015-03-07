@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/web-services/web-services.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="org.gitter.fwc.services" />
+    <context:component-scan base-package="org.gitter.fwc.services, org.gitter.fwc.services.endpoints" />
     <sws:annotation-driven />
 
     <sws:dynamic-wsdl id="InstitutionService"

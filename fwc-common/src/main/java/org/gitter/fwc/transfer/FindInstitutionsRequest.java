@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(namespace = "http://fwc.gitter.org/services/")
 @XmlType(name = "FindInstitutionsRequest")
 public class FindInstitutionsRequest {
+    public static final String NAME = "findInstitutionsRequest";
+
     private String keyword;
 
     @XmlElement(name = "keyword")

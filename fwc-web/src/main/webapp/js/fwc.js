@@ -40,7 +40,7 @@
             });
         } else if (method == 'ejb-soap') {
             $.soap({
-                url : '/fwc-ejb/soap/institution/InstitutionService',
+                url : '/fwc-ejb/soap-institution/InstitutionService',
                 appendMethodToURL : false,
                 SOAPAction : '',
                 data : function(Soap) {
@@ -50,7 +50,9 @@
                         .newChild('soap:Body')
                             .newChild('fwc:findInstitutions')
                                 .addNamespace('fwc', 'http://fwc.gitter.org/services/')
-                                .newChild('keyword').val(keyword).end()
+                                .newChild('fwc:findInstitutionsRequest')
+                                    .newChild('keyword').val(keyword).end()
+                                .end()
                             .end()
                         .end();
                 },

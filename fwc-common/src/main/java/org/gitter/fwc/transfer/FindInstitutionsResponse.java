@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(namespace = "http://fwc.gitter.org/services/")
 @XmlType(name = "FindInstitutionsResponse")
 public class FindInstitutionsResponse {
+    public static final String NAME = "findInstitutionsResponse";
+
     private List<Institution> institutions;
 
     @XmlElement(name = "institutionList")
