@@ -25,7 +25,7 @@ public class InstitutionSoapServiceImpl implements InstitutionSoapService {
     }
 
     @Override
-    @PayloadRoot(localPart = "findInstitutionsRequest",
+    @PayloadRoot(localPart = FindInstitutionsRequest.NAME,
             namespace = InstitutionSoapService.TARGET_NAMESPACE)
     public @ResponsePayload FindInstitutionsResponse findInstitutions(
             @RequestPayload FindInstitutionsRequest request) {
