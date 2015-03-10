@@ -37,6 +37,34 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>3.0.4</version>
+                <executions>
+                    <execution>
+                        <id>generate-soap-classes</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated-sources</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/wsdl/ExampleInstitutionService.wsdl</wsdl>
+                                    <wsdlLocation>classpath:wsdl/ExampleInstitutionService.wsdl</wsdlLocation>
+                                    <extraargs>
+                                        <extraarg>-validate</extraarg>
+                                        <extraarg>-impl</extraarg>
+                                        <extraarg>-verbose</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-java2ws-plugin</artifactId>
                 <dependencies>
                     <dependency>
@@ -47,40 +75,20 @@
                 </dependencies>
                 <executions>
                     <execution>
-                        <id>generateWsdl</id>
+                        <id>generateWsdl-sample-not-in-use</id>
                         <phase>generate-resources</phase>
                         <configuration>
                             <genWsdl>true</genWsdl>
                             <genServer>false</genServer>
                             <genClient>false</genClient>
                             <className>org.gitter.fwc.services.endpoints.InstitutionSoapServiceImpl</className>
-                            <outputFile>${project.build.directory}/generated-resources/wsdl/InstitutionService.wsdl</outputFile>
+                            <outputFile>${project.build.directory}/generated-resources/wsdl/ExampleGenerated.wsdl</outputFile>
                             <address>this can be blank, JBoss will rewrite the address :-)</address>
                             <verbose>true</verbose>
                         </configuration>
                         <goals>
                             <goal>java2ws</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-wsdl</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/wsdl</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-resources/wsdl</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

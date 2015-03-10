@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://fwc.gitter.org/services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+    name="soap-institution" targetNamespace="http://fwc.gitter.org/services/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fwc.gitter.org/services/"
+            elementFormDefault="unqualified" targetNamespace="http://fwc.gitter.org/services/" version="1.0">
+
+            <xs:element name="findInstitutionsRequest" type="tns:findInstitutionsRequest" />
+
+            <xs:element name="findInstitutionsResponse" nillable="true" type="xs:anyType" />
+
+            <xs:complexType name="findInstitutionsRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="keyword" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="findInstitutionsResponse">
+                <xs:sequence>
+                    <xs:element form="qualified" minOccurs="0" name="institutionList" type="tns:institutionList" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="institutionList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="institution" type="tns:institution" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="institution">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" type="xs:string" />
+                    <xs:element minOccurs="0" name="institutionName" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="findInstitutionsResponse">
+        <wsdl:part element="tns:findInstitutionsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="findInstitutionsRequest">
+        <wsdl:part element="tns:findInstitutionsRequest" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="InstitutionService">
+        <wsdl:operation name="findInstitutions">
+            <wsdl:input message="tns:findInstitutionsRequest" name="findInstitutionsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:findInstitutionsResponse" name="findInstitutionsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="soap-institutionSoapBinding" type="tns:InstitutionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="findInstitutions">
+            <soap:operation soapAction="" style="document" />
+            <wsdl:input name="findInstitutionsRequest">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="findInstitutionsResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="soap-institution">
+        <wsdl:port binding="tns:soap-institutionSoapBinding" name="InstitutionServicePort">
+            <soap:address location="localhost:8180/soap/institution/InstitutionService" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
