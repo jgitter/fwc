@@ -1,4 +1,4 @@
-package org.gitter.fwc.services.endpoints;
+package org.gitter.fwc.endpoints;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.gitter.fwc.exception.FwcServiceException;
 import org.gitter.fwc.services.InstitutionRestController;
 import org.gitter.fwc.services.InstitutionService;
 
@@ -18,14 +19,15 @@ import org.gitter.fwc.services.InstitutionService;
 @Stateless
 public class InstitutionRestControllerImpl implements InstitutionRestController {
 
-    @Inject
-    private InstitutionService service;
+	@Inject
+	private InstitutionService service;
 
-    @Override
-    @GET
-    @Path("{keyword}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Map<String, String>> findInstitutions(@PathParam("keyword") String keyword) {
-        return service.findInstitutions(keyword);
-    }
+	@Override
+	@GET
+	@Path("{keyword}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Map<String, String>> findInstitutions(@PathParam("keyword") String keyword)
+			throws FwcServiceException {
+		return service.findInstitutions(keyword);
+	}
 }

@@ -7,5 +7,5 @@ import javax.ejb.Local;
 
 @Local
 public interface InstitutionDAO {
-    List<Map<String, String>> findByKeyword(String keyword);
+	List<Map<String, String>> findByKeyword(String keyword);
 }

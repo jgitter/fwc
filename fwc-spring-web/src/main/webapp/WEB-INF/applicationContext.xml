@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/web-services/web-services.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="org.gitter.fwc.services, org.gitter.fwc.services.endpoints" />
+    <context:component-scan base-package="org.gitter.fwc.services, org.gitter.fwc.endpoints" />
     <sws:annotation-driven />
 
     <sws:dynamic-wsdl id="InstitutionService"
@@ -33,7 +33,7 @@
 
     <!-- This is only needed if not already registered via the component-scan performed above -->
     <!-- 
-    <bean name="institutionService" class="org.gitter.fwc.InstitutionService">
+    <bean name="institutionService" class="org.gitter.fwc.services.InstitutionService">
         <property name="dao" ref="institutionDAO" />
     </bean>
      -->

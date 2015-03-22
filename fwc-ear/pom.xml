@@ -26,6 +26,18 @@
     <dependencies>
         <dependency>
             <groupId>org.gitter</groupId>
+            <artifactId>fwc-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-dao-spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-service-spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
             <artifactId>fwc-web</artifactId>
             <type>war</type>
         </dependency>
@@ -38,10 +50,6 @@
             <groupId>org.gitter</groupId>
             <artifactId>fwc-spring-web</artifactId>
             <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>org.gitter</groupId>
-            <artifactId>fwc-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.gitter</groupId>

@@ -30,6 +30,16 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-dao-spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gitter</groupId>
+            <artifactId>fwc-service-spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>fluent-hc</artifactId>
             <scope>provided</scope>
