@@ -1,8 +1,9 @@
-package org.gitter.fwc.services.endpoints;
+package org.gitter.fwc.endpoints;
 
 import java.util.List;
 import java.util.Map;
 
+import org.gitter.fwc.exception.FwcServiceException;
 import org.gitter.fwc.services.InstitutionRestController;
 import org.gitter.fwc.services.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/institution")
 public class InstitutionRestControllerImpl implements InstitutionRestController {
 
-    @Autowired
-    private InstitutionService service;
+	@Autowired
+	private InstitutionService service;
 
-    @Override
-    @RequestMapping(value = "/{keyword}", method = RequestMethod.GET)
-    public @ResponseBody List<Map<String, String>> findInstitutions(
-            @PathVariable("keyword") String keyword) {
-        return service.findByKeyword(keyword);
-    }
+	@Override
+	@RequestMapping(value = "/{keyword}", method = RequestMethod.GET)
+	public @ResponseBody List<Map<String, String>> findInstitutions(
+			@PathVariable("keyword") String keyword) throws FwcServiceException {
+		return service.findByKeyword(keyword);
+	}
 }

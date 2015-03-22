@@ -23,7 +23,9 @@
         <module>fwc-ear</module>
         <module>fwc-web</module>
         <module>fwc-common</module>
+        <module>fwc-dao-spec</module>
         <module>fwc-dao</module>
+        <module>fwc-service-spec</module>
         <module>fwc-ejb-services</module>
         <module>fwc-ejb-web</module>
         <module>fwc-spring-services</module>
@@ -54,6 +56,11 @@
             </dependency>
             <dependency>
                 <groupId>org.gitter</groupId>
+                <artifactId>fwc-dao-spec</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.gitter</groupId>
                 <artifactId>fwc-dao</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
@@ -66,9 +73,8 @@
             </dependency>
             <dependency>
                 <groupId>org.gitter</groupId>
-                <artifactId>fwc-ejb-web</artifactId>
+                <artifactId>fwc-service-spec</artifactId>
                 <version>${project.version}</version>
-                <type>war</type>
             </dependency>
             <dependency>
                 <groupId>org.gitter</groupId>
@@ -78,14 +84,20 @@
             </dependency>
             <dependency>
                 <groupId>org.gitter</groupId>
-                <artifactId>fwc-spring-web</artifactId>
+                <artifactId>fwc-spring-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.gitter</groupId>
+                <artifactId>fwc-ejb-web</artifactId>
                 <version>${project.version}</version>
                 <type>war</type>
             </dependency>
             <dependency>
                 <groupId>org.gitter</groupId>
-                <artifactId>fwc-spring-services</artifactId>
+                <artifactId>fwc-spring-web</artifactId>
                 <version>${project.version}</version>
+                <type>war</type>
             </dependency>
 
             <dependency>

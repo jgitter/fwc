@@ -42,16 +42,17 @@
                 <executions>
                     <execution>
                         <id>generate-soap-classes</id>
-                        <phase>generate-sources</phase>
+                        <!-- <phase>generate-sources</phase> -->
+                        <phase>none</phase>
                         <configuration>
-                            <sourceRoot>${project.build.directory}/generated-sources</sourceRoot>
+                        
+                            <sourceRoot>${project.build.directory}/example-generated-service</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/wsdl/ExampleInstitutionService.wsdl</wsdl>
                                     <wsdlLocation>classpath:wsdl/ExampleInstitutionService.wsdl</wsdlLocation>
                                     <extraargs>
                                         <extraarg>-validate</extraarg>
-                                        <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>
                                     </extraargs>
                                 </wsdlOption>
@@ -72,6 +73,11 @@
                         <artifactId>fwc-common</artifactId>
                         <version>${project.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.gitter</groupId>
+                        <artifactId>fwc-service-spec</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
                 </dependencies>
                 <executions>
                     <execution>
@@ -81,7 +87,7 @@
                             <genWsdl>true</genWsdl>
                             <genServer>false</genServer>
                             <genClient>false</genClient>
-                            <className>org.gitter.fwc.services.endpoints.InstitutionSoapServiceImpl</className>
+                            <className>org.gitter.fwc.endpoints.InstitutionSoapServiceImpl</className>
                             <outputFile>${project.build.directory}/generated-resources/wsdl/ExampleGenerated.wsdl</outputFile>
                             <address>this can be blank, JBoss will rewrite the address :-)</address>
                             <verbose>true</verbose>
